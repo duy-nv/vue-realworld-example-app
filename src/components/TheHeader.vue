@@ -4,6 +4,15 @@
       <router-link class="navbar-brand" :to="{ name: 'home' }">
         conduit
       </router-link>
+      <div v-if="!hideMenu" style="height: 50px; background: #f00">heello</div>
+      <router-link
+        class="nav-link"
+        active-class="active"
+        exact
+        :to="{ name: 'settings' }"
+      >
+        Settings
+      </router-link>
       <ul v-if="!isAuthenticated" class="nav navbar-nav pull-xs-right">
         <li class="nav-item">
           <router-link
@@ -90,7 +99,8 @@ import { mapGetters } from "vuex";
 export default {
   name: "RwvHeader",
   computed: {
-    ...mapGetters(["currentUser", "isAuthenticated"])
+    // ...mapState(["hideMenu"]),
+    ...mapGetters(["hideMenu", "currentUser", "isAuthenticated"])
   }
 };
 </script>

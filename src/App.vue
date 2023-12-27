@@ -19,4 +19,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+[v-cloak] {
+  display: none;
+}
+</style>

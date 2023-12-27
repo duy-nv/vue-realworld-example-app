@@ -29,6 +29,9 @@ export default new Router({
     {
       name: "login",
       path: "/login",
+      meta: {
+        hideMenu: true
+      },
       component: () => import("@/views/Login")
     },
     {
@@ -39,6 +42,9 @@ export default new Router({
     {
       name: "settings",
       path: "/settings",
+      meta: {
+        hideMenu: true
+      },
       component: () => import("@/views/Settings")
     },
     // Handle child routes with a default, by giving the name to the

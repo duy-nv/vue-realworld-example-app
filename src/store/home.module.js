@@ -11,7 +11,8 @@ const state = {
   tags: [],
   articles: [],
   isLoading: true,
-  articlesCount: 0
+  articlesCount: 0,
+  hideMenu: false
 };
 
 const getters = {
@@ -26,6 +27,9 @@ const getters = {
   },
   tags(state) {
     return state.tags;
+  },
+  hideMenu(state) {
+    return state.hideMenu;
   }
 };
 
@@ -36,7 +40,7 @@ const actions = {
       .then(({ data }) => {
         commit(FETCH_END, data);
       })
-      .catch(error => {
+      .catch((error) => {
         throw new Error(error);
       });
   },
@@ -45,7 +49,7 @@ const actions = {
       .then(({ data }) => {
         commit(SET_TAGS, data.tags);
       })
-      .catch(error => {
+      .catch((error) => {
         throw new Error(error);
       });
   }
@@ -65,7 +69,7 @@ const mutations = {
     state.tags = tags;
   },
   [UPDATE_ARTICLE_IN_LIST](state, data) {
-    state.articles = state.articles.map(article => {
+    state.articles = state.articles.map((article) => {
       if (article.slug !== data.slug) {
         return article;
       }
@@ -76,6 +80,9 @@ const mutations = {
       article.favoritesCount = data.favoritesCount;
       return article;
     });
+  },
+  setMenuVisibility(state, data) {
+    state.hideMenu = data;
   }
 };
 
